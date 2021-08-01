@@ -2,12 +2,17 @@ FROM registry.access.redhat.com/ubi8:8.0
 
 LABEL version="1.0" \
       description="To Do List application front-end" \
+<<<<<<< HEAD
       creationDate="2017-12-25" \  
+=======
+      creationDate="2017-12-25" \
+>>>>>>> b4864d401c2c789a3b083117ac274a4ab2eaf710
       updatedDate="2019-08-01"
 
 ENV BACKEND_HOST=localhost:8081
 
 RUN yum install -y --disableplugin=subscription-manager --nodocs \
+<<<<<<< HEAD
    nginx nginx-mod-http-perl \
   && yum clean all
 
@@ -16,6 +21,16 @@ COPY nginx.conf /etc/nginx/
 RUN touch /run/nginx.pid \
 && chgrp -R 0 /var/log/nginx /run/nginx.pid \
 && chmod -R g=u /var/log/nginx /run/nginx.pid
+=======
+    nginx nginx-mod-http-perl && \
+    yum clean all
+
+COPY nginx.conf /etc/nginx/
+
+RUN touch /run/nginx.pid && \
+    chgrp -R 0 /var/log/nginx /run/nginx.pid && \
+    chmod -R g=u /var/log/nginx /run/nginx.pid
+>>>>>>> b4864d401c2c789a3b083117ac274a4ab2eaf710
   
 COPY src/ /usr/share/nginx/html
 
